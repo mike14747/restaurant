@@ -8,27 +8,54 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var hasTable = [];
-var waitingList = [];
+var hasTable = [
+    {   
+    routeName: "user",
+    name: "user name",
+    phone: 2162162169,
+    email:"user@usermail.com"
+    },
+    {   
+    routeName: "seconduser",
+    name: "SECOND user name",
+    phone: 2162161111,
+    email:"user2@usermail.com"
+    }
+];
+
+var waitingList = [
+    {   
+        routeName: "user",
+        name: "user name WAITING 1",
+        phone: 2162162169,
+        email:"user@usermail.com"
+        },
+        {   
+        routeName: "seconduser",
+        name: "SECOND user name WAITING 2",
+        phone: 2162161111,
+        email:"user2@usermail.com"
+        }
+];
 
 app.get("/", function (req, res) {
-    // res.sendFile(path.join(__dirname, "./home.html"));
-    res.send("home.html");
+    res.sendFile(path.join(__dirname, "./home.html"));
+    // res.send("home.html");
 });
 
 app.get("/home", function (req, res) {
-    // res.sendFile(path.join(__dirname, "./home.html"));
-    res.send("home.html");
+    res.sendFile(path.join(__dirname, "./home.html"));
+    // res.send("home.html");
 });
 
 app.get("/tables", function (req, res) {
-    // res.sendFile(path.join(__dirname, "./tables.html"));
-    res.send("tables.html");
+    res.sendFile(path.join(__dirname, "./tables.html"));
+    // res.send("tables.html");
 });
 
 app.get("/reserve", function (req, res) {
-    // res.sendFile(path.join(__dirname, "./reserve.html"));
-    res.send("reserve.html");
+    res.sendFile(path.join(__dirname, "./reserve.html"));
+    // res.send("reserve.html");
 });
 //----------------------  JSON RESPONSE ENDPOINTS-----------------------------------
 
