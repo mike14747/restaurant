@@ -9,33 +9,33 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 var hasTable = [
-    {   
-    routeName: "user",
-    name: "user name",
-    phone: 2162162169,
-    email:"user@usermail.com"
+    {
+        name: "user name",
+        phone: 2162162169,
+        email: "user@usermail.com",
+        id: 2154
     },
-    {   
-    routeName: "seconduser",
-    name: "SECOND user name",
-    phone: 2162161111,
-    email:"user2@usermail.com"
+    {
+        name: "SECOND user name",
+        phone: 2162161111,
+        email: "user2@usermail.com",
+        id: 2157
     }
 ];
 
 var waitingList = [
-    {   
-        routeName: "user",
+    {
         name: "user name WAITING 1",
         phone: 2162162169,
-        email:"user@usermail.com"
-        },
-        {   
-        routeName: "seconduser",
+        email: "user@usermail.com",
+        id: 2152
+    },
+    {
         name: "SECOND user name WAITING 2",
         phone: 2162161111,
-        email:"user2@usermail.com"
-        }
+        email: "user2@usermail.com",
+        id: 2151
+    }
 ];
 
 app.get("/", function (req, res) {
@@ -59,12 +59,28 @@ app.get("/reserve", function (req, res) {
 });
 //----------------------  JSON RESPONSE ENDPOINTS-----------------------------------
 
-app.get("/api/tables", function(req, res) {
+app.get("/api/tables", function (req, res) {
     return res.json(hasTable);
 });
 
-app.get("/api/reserve", function(req, res) {
+app.get("/api/reserve", function (req, res) {
     return res.json(waitingList);
+});
+
+app.post("/api/reserve", function (req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    var reservation = req.body;
+
+    console.log(reservation);
+
+    if (hasTable.length < 5) {
+        hasTable.push(reservation);
+    } else {
+        waitingList.push(reservation);
+    }
+    
+    res.json(reservation);
 });
 
 //----------------------------------------------------------------------------------
