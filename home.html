@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Star Wars - Express</title>
+  <title>Hot Restaurant</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,11 +16,12 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Hot Restaurant</h1>
-      <h3>Current Reservations and Waiting List</h3>
+      <h1 class="text-center">Hot Restaurant</h1>
+      <h3 class="text-center">Current Reservations and Waiting List</h3>
       <hr>
-      <a href="/reserve"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> Make a reservation</button></a>
-    </div>
+      <div  class="text-center">
+        <a href="/reserve"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> Make a reservation</button></a>
+      </div>    </div>
     <div class="row">
 
       <div class="col-12">
@@ -46,14 +47,14 @@
           <div class="card-body" id="wait_list">
             <input type="text" id="character-search" class="form-control">
             <br>
-            <div class="text-right"> 
-
-        </div>
-      </div>
+            <div class="text-left"> 
+            </div>
+          </div>
     </div>
+    <div><a href="/api/table">API Table Link </a>| <a href="api/waitlist">API Wait List</a></div>
   </div>
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $("#current_res").on("click", function() {
       var searchedCharacter = $("#character-search").val().trim();
 
@@ -75,8 +76,8 @@
           $("#stats").hide();
         }
       });
-    });
-  </script>
+    }); -->
+  <!-- </script> -->
 </body>
 
 </html>
