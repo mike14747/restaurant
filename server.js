@@ -53,6 +53,11 @@ app.get("/tables", function (req, res) {
     // res.send("tables.html");
 });
 
+app.get("/clear", function (req, res) {
+    hasTable = [];
+    waitingList = [];
+});
+
 app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "./reserve.html"));
     // res.send("reserve.html");
@@ -72,15 +77,15 @@ app.post("/api/reserve", function (req, res) {
     // This works because of our body parsing middleware
     var reservation = req.body;
 
-    console.log(reservation);
+    // console.log(reservation);
 
     if (hasTable.length < 5) {
         hasTable.push(reservation);
+        return true;
     } else {
         waitingList.push(reservation);
+        return false;
     }
-    
-    res.json(reservation);
 });
 
 //----------------------------------------------------------------------------------
