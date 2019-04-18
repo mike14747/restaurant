@@ -81,10 +81,10 @@ app.post("/api/reserve", function (req, res) {
 
     if (hasTable.length < 5) {
         hasTable.push(reservation);
-        return true;
+        res.json(true);
     } else {
         waitingList.push(reservation);
-        return false;
+        res.json(false);
     }
 });
 
